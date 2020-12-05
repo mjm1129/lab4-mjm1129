@@ -166,9 +166,10 @@ test_next_chunk()
 		p[i] = (header_t *)mem_sbrk(256);
 		init_chunk(p[i], 256, true);
 	}
-	printf("address:   \t%p\t%p\t%p\n", &p[0], &p[1], &p[2]);
+	printf("address:\t\t\t%p\t%p\t%p\n", &p[0], &p[1], &p[2]);
 	// printf("after next_chunk 0: %ld\n", &p[0] + 8);
 	printf("result next_chunk: %p\n", (next_chunk(p[0])));
+	// printf("result in decimal: %d\n", &(next_chunk(p[0])));
 	// printf("%d\n", *(2*(&next_chunk(p[0]) - &p[0])));
 	
 	
@@ -177,7 +178,7 @@ test_next_chunk()
 	
 	// printf("done till here2\n");
 	
-	// assert(next_chunk(p[0]) == p[1]);
+	assert(next_chunk(p[0]) == p[1]);
 	// assert(next_chunk(p[1]) == NULL);
 
 }

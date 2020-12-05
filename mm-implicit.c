@@ -34,6 +34,8 @@ next_chunk(header_t *h)
 {
 	//Your code here
 	header_t *temp_var;
+	char diff = 0x05;
+	char diff2 = diff << 8;
 	// If h is NULL
 	if (h == NULL){
 		if (h->allocated == 0){
@@ -42,14 +44,13 @@ next_chunk(header_t *h)
 		return h;
 	} else {
 		temp_var = *(&h + (h->size));
-		printf("inside next_chunk address: %p\n", &h);
-		printf("                  address: %p\n", &temp_var);
-		printf("                  address: %p\n", *(&h + (h->size)));
+		printf("content: %p\n", h);
+		printf("inside next_chunk address: %p\n", (&h + diff));
+		printf("                  address: %p\n", (&temp_var + diff));
 		// printf("h allocated: %ld\n", h->allocated);
 		// printf("h size: %ld\n", h->size);
 
-		return *(&temp_var);
-		// return *(&h + (h->size) + 72);
+		return *(&temp_var + diff);
 	}
 }
 
